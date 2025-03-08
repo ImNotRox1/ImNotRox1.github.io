@@ -530,7 +530,7 @@
 
         // Copy script functionality
         document.getElementById('copy-script').addEventListener('click', function() {
-            const script = `loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/GGHub/refs/heads/main/loader.lua"))()`;
+            const script = `loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/Trevous-Hub/refs/heads/main/loader.lua"))()`;
             navigator.clipboard.writeText(script).then(() => {
                 this.innerHTML = '<i class="bx bx-check"></i>Copied!';
                 this.classList.add('success-animation');
