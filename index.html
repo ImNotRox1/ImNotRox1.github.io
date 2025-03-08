@@ -3,332 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Trevous</title>
+    <title>GG Hub — A Scripting Server</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ANXV1f/V1dX/1dXV/9XV1f////8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/1dXV/////wD///8A////AP///wD///8A////AP///wD///8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/V1dX/////AP///wD///8A////AP///wD///8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/9XV1f////8A////AP///wD///8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/1dXV/////wD///8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/1dXV/9XV1f8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/V1dX/////ANXV1f8AAAD/AAAA/wAAAP8AAAD/1dXV/////wDV1dX/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/1dXV/9XV1f8AAAD/AAAA/wAAAP8AAAD/1dXV/////wD///8A1dXV/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/9XV1f/V1dX/AAAA/wAAAP8AAAD/AAAA/9XV1f////8A////ANXV1f8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP/V1dX/1dXV/wAAAP8AAAD/AAAA/wAAAP/V1dX/////AP///wDV1dX/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/1dXV/////wDV1dX/AAAA/wAAAP/V1dX/////AP///wD///8A1dXV/9XV1f/V1dX/1dXV/9XV1f/V1dX/1dXV/////wD///8A1dXV/9XV1f/V1dX/////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.2); }
-            50% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.4); }
-            100% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.2); }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        :root {
+            --primary: #7454fb;
+            --primary-dark: #5c43d6;
+            --primary-light: #8e75ff;
+            --bg-dark: #0a0a0f;
+            --text: rgba(255, 255, 255, 0.9);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --border: rgba(116, 84, 251, 0.2);
+            --gradient: linear-gradient(135deg, #7454fb, #8e75ff);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glow: 0 0 20px rgba(116, 84, 251, 0.5);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #0066ff;
-            --primary-dark: #0052cc;
-            --bg-dark: #020617;
-            --text: rgba(255, 255, 255, 0.8);
-            --border: rgba(0, 102, 255, 0.2);
-            --gradient: linear-gradient(45deg, #0066ff, #0066ff);
-            --gradient-size: 200% 200%;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-dark);
-            color: #fff;
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         .navbar {
-            background-color: rgba(2, 6, 23, 0.95);
-            padding: 1.5rem;
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 2rem;
+            background: rgba(10, 10, 15, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            animation: slideIn 1s ease-out;
         }
 
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .nav-brand:hover {
-            transform: translateY(-2px);
-        }
-
-        .nav-brand h1 {
-            color: #fff;
+        .logo {
             font-size: 1.5rem;
+            font-weight: 800;
             background: var(--gradient);
-            background-size: var(--gradient-size);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient 3s ease infinite;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text);
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s;
             position: relative;
-            overflow: hidden;
         }
 
-        .nav-links a::before {
+        .logo::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
             height: 2px;
+            bottom: -4px;
+            left: 0;
             background: var(--gradient);
-            background-size: var(--gradient-size);
             transform: scaleX(0);
             transform-origin: right;
-            transition: transform 0.3s;
-            animation: gradient 3s ease infinite;
+            transition: transform 0.3s ease;
         }
 
-        .nav-links a:hover::before {
+        .logo:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
 
-        .nav-links a:hover {
-            color: #fff;
-            background: rgba(0, 102, 255, 0.1);
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-        .join-discord {
-            background: var(--gradient);
-            background-size: var(--gradient-size);
-            color: white !important;
-            padding: 0.5rem 1.5rem !important;
-            border-radius: 5px;
+        .nav-link {
+            color: var(--text);
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s;
-            animation: gradient 3s ease infinite, glow 2s infinite;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
-        .join-discord:hover {
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .discord-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .discord-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .discord-btn:hover::before {
+            left: 100%;
+        }
+
+        .discord-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+            box-shadow: var(--glow);
         }
 
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem;
-            background: radial-gradient(circle at center, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(116, 84, 251, 0.15) 0%, transparent 70%),
+                radial-gradient(circle at 80% 70%, rgba(116, 84, 251, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 1200px;
             text-align: center;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .hero h2 {
-            font-size: 4.5rem;
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
             background: var(--gradient);
-            background-size: var(--gradient-size);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient 3s ease infinite, fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
+            line-height: 1.2;
             position: relative;
-            overflow: hidden;
+            display: inline-block;
         }
 
-        .button-primary {
-            background: var(--gradient);
-            background-size: var(--gradient-size);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
-            animation: gradient 3s ease infinite;
-        }
-
-        .button-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
-        }
-
-        .button-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-        }
-
-        .button-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .wave-container {
+        .hero-title::after {
+            content: attr(data-text);
             position: absolute;
-            bottom: 0;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.3;
+            filter: blur(40px);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.8;
+        }
+
+        .features {
+            padding: 8rem 2rem;
+            background: rgba(116, 84, 251, 0.03);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
             left: 0;
             width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
+            height: 1px;
+            background: var(--gradient);
         }
 
-        .wave {
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s;
             position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 120px;
+            overflow: hidden;
         }
 
-        .wave .shape-fill {
-            fill: var(--primary);
-            opacity: 0.1;
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(116, 84, 251, 0.15);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
         }
 
         .get-script {
-            padding: 4rem 2rem;
-            background: rgba(0, 102, 255, 0.05);
+            padding: 8rem 2rem;
             text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(116, 84, 251, 0.05));
+            position: relative;
         }
-        .get-script-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+
+        .copy-button {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copy-button i {
+            font-size: 1.2rem;
+        }
+
+        .copy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .copy-button:hover::before {
+            left: 100%;
+        }
+
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        .success-animation {
+            animation: successPop 0.5s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes successPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .line {
+            height: 1px;
+            flex: 1;
+            background: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-light);
+            animation: shimmer 2s infinite;
+        }
+
+        .divider-icon {
+            font-size: 2rem;
             color: var(--primary);
+            background: var(--bg-dark);
+            padding: 1rem;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            animation: pulse 2s infinite;
         }
-        .get-script-content p {
-            color: var(--text);
-            margin-bottom: 2rem;
+
+        @keyframes shimmer {
+            100% { left: 100%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: var(--glow); }
+            50% { transform: scale(1.1); box-shadow: 0 0 5px rgba(116, 84, 251, 0.7); }
+            100% { transform: scale(1); box-shadow: var(--glow); }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="#" class="nav-brand">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230066ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'/%3E%3C/svg%3E" alt="Trevous Icon">
-            <h1>Project Trevous</h1>
-        </a>
-        <div class="nav-links">
-            <a href="projtrevous.html">Home</a>
-            <a href="https://discord.gg/wBJUYDSuyM" target="_blank" class="join-discord">Join Discord</a>
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class='bx bxs-cube-alt'></i>
+                GG Hub
+            </a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#get-script" class="nav-link">Get Script</a>
+                <a href="https://discord.gg/wBJUYDSuyM" target="_blank" class="discord-btn">
+                    <i class='bx bxl-discord-alt'></i>
+                    Join Discord
+                </a>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <h2>Automate Your<br>Fishing/Blade Experience</h2>
-            <p>Experience the most advanced fishing/blade automation script for Roblox. Built for performance, reliability, and ease of use. Join thousands of satisfied users today!</p>
-            <div class="cta-buttons">
-                <a href="#get-script" class="button button-primary">Get Started</a>
-                <a href="https://discord.gg/wBJUYDSuyM" target="_blank" class="button button-secondary">Join Community</a>
-            </div>
-        </div>
-        <div class="wave-container">
-            <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
+            <h1 class="hero-title floating" data-text="Welcome to GG Hub">Welcome to GG Hub</h1>
+            <p class="hero-description">Experience the most powerful and mobile compatible script hub. Built for performance, security, and an better user experience.</p>
+            <a href="#get-script" class="discord-btn">
+                <i class='bx bx-download'></i>
+                Get Started
+            </a>
         </div>
     </section>
 
-    <section id="get-script" class="get-script">
-        <div class="get-script-content">
-            <h2>Get Your Script Now!</h2>
-            <p>Click the button below to copy the script content to your clipboard.</p>
-            <div class="cta-buttons">
-                <a id="copy-script-content" onmouseover="this.style.cursor='pointer'" class="button button-primary">Copy Script</a>
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class='bx bx-rocket feature-icon'></i>
+                <h3 class="feature-title">High Performance</h3>
+                <p class="feature-description">Optimized for maximum speed and efficiency, ensuring smooth execution every time.</p>
+            </div>
+            <div class="feature-card">
+                <i class='bx bx-refresh feature-icon'></i>
+                <h3 class="feature-title">Regular Updates</h3>
+                <p class="feature-description">Constant updates to ensure compatibility and introduce new features.</p>
+            </div>
+            <div class="feature-card">
+                <i class='bx bx-support feature-icon'></i>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p class="feature-description">Active community and dedicated support team ready to help.</p>
             </div>
         </div>
+    </section>
+
+    <div class="divider">
+        <div class="line"></div>
+        <i class='bx bx-code-block divider-icon'></i>
+        <div class="line"></div>
+    </div>
+
+    <section id="get-script" class="get-script">
+        <h2 class="section-title">Get Your Script</h2>
+        <p class="hero-description">Click the button below to copy the script to your clipboard</p>
+        <button id="copy-script" class="copy-button">
+            <i class='bx bx-code-alt'></i>
+            Copy Script
+        </button>
     </section>
 
     <script>
-        // Smooth scroll for anchor links
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Copy script functionality
+        document.getElementById('copy-script').addEventListener('click', function() {
+            const script = `loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/GGHub/refs/heads/main/loader.lua"))()`;
+            navigator.clipboard.writeText(script).then(() => {
+                this.innerHTML = '<i class="bx bx-check"></i>Copied!';
+                this.classList.add('success-animation');
+                setTimeout(() => {
+                    this.innerHTML = '<i class="bx bx-code-alt"></i>Copy Script';
+                    this.classList.remove('success-animation');
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -338,65 +551,13 @@
             });
         });
 
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Animate feature cards
+        // Feature card hover effect
         document.querySelectorAll('.feature-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
-        });
-
-        // Animate stat cards
-        document.querySelectorAll('.stat-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
-        });
-
-        // Animate testimonial cards
-        document.querySelectorAll('.testimonial-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease-out';
-            observer.observe(card);
-        });
-
-        // Add hover effect to feature list items
-        document.querySelectorAll('.feature-list li').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateX(5px)';
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
             });
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateX(0)';
-            });
-        });
-
-        // Add pulse animation to CTA buttons
-        document.querySelectorAll('.button-primary').forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                button.style.animation = 'pulse 1s infinite';
-            });
-            button.addEventListener('mouseleave', () => {
-                button.style.animation = '';
-            });
-        });
-
-        document.getElementById('copy-script-content').addEventListener('click', function() {
-            const scriptContent = `loadstring(game:HttpGet("https://raw.githubusercontent.com/ImNotRox1/Trevous-Hub/refs/heads/main/loader.lua"))()`;
-            navigator.clipboard.writeText(scriptContent).then(() => {
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
     </script>
